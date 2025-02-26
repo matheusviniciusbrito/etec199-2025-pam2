@@ -1,0 +1,21 @@
+Criar e executar um projeto com Expo
+
+No CMD
+
+1 - Criar o projeto
+npx create-expo-app aula2 --template blank
+
+2 - Acessar o diretório do projeto criado
+cd aula2
+
+3 - Abrir o projeto criado no vscode
+code .
+
+4 - Executar o projeto pela web
+npm run web
+
+5 - Caso de erro de dependências da web, executar:
+npx expo install react-dom react-native-web @expo/metro-runtime
+
+6 - Executar o projeto pela web
+npm run web
