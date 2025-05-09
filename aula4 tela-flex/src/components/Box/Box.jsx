@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import styles from "../style";
+import styles from "./BoxStyle";
 
-export default function Header() {
+export default function Box() {
   return (
     <View style={styles.header}>
       <View style={styles.balanceCard}>

@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text } from "react-native";
-import styles from "../style";
+import styles from "./IncomeExpensesStyle";
 
-export default function Summary() {
+export default function IncomeExpenses() {
   return (
     <View style={styles.summary}>
       <View style={styles.summaryItem}>
