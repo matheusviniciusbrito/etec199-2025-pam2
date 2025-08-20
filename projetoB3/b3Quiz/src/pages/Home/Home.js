@@ -1,22 +1,21 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
-      <Image 
-        source={require('../../../assets/mub3-logo.svg')} 
+      <Image
+        source={require('../../../assets/mub3-logo.svg')}
         style={styles.logo}
         resizeMode="contain"
       />
-      
+
       <Text style={styles.subtitle}>
         Museu da bolsa do Brasil nasceu do desejo de preservar e compartilhar a
         história do mercado de capitais brasileiro
       </Text>
 
-      <TouchableOpacity 
-        style={styles.buttonPrimary} 
+      <TouchableOpacity
+        style={styles.buttonPrimary}
         onPress={() => navigation.navigate('Login')}
       >
         <Text style={styles.buttonText}>Jogar</Text>

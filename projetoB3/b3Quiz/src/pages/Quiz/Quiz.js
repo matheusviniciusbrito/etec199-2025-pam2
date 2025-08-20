@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useEffect, useState } from 'react';
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function Quiz({ navigation, route }) {
   // Dados podem vir por route.params.quiz (JSON) ou ser buscados do DB
@@ -66,7 +66,7 @@ export default function Quiz({ navigation, route }) {
         onPress={() => onSelectOption(index)}
         activeOpacity={0.8}
       >
-            {imageSource ? (
+        {imageSource ? (
           <Image source={imageSource} style={styles.optionImage} resizeMode="contain" />
         ) : null}
         {item.text ? <Text style={styles.optionLabel}>{item.text}</Text> : null}

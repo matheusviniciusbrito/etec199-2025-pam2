@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useState } from 'react';
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function Login({ navigation }) {
   const [username, setUsername] = useState('');
 
   return (
     <View style={styles.container}>
-      
-      <Image 
-        source={require('../../../assets/mub3-logo.svg')} 
-        style={{ width: 160, height: 70, marginBottom: 10 }} 
+
+      <Image
+        source={require('../../../assets/mub3-logo.svg')}
+        style={{ width: 160, height: 70, marginBottom: 10 }}
         resizeMode="contain"
       />
 
@@ -24,15 +24,15 @@ export default function Login({ navigation }) {
         onChangeText={setUsername}
       />
 
-      <TouchableOpacity 
-        style={styles.buttonPrimary} 
+      <TouchableOpacity
+        style={styles.buttonPrimary}
         onPress={() => navigation.navigate('Quiz', { username })}
       >
         <Text style={styles.buttonText}>Continuar</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity 
-        style={styles.buttonSecondary} 
+      <TouchableOpacity
+        style={styles.buttonSecondary}
         onPress={() => navigation.goBack()}
       >
         <Text style={styles.buttonText}>Voltar</Text>

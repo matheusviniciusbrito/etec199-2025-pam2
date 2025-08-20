@@ -1,9 +1,8 @@
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './src/pages/Home/Home.js';
 import Login from './src/pages/Login/Login.js';
-import Quiz from './src/pages/Quiz/Quiz.js'
+import Quiz from './src/pages/Quiz/Quiz.js';
 
 const Stack = createStackNavigator();
 
