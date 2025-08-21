@@ -1,27 +1,19 @@
+import React, { useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { useEffect, useState } from 'react';
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import Logo from '../../../assets/mub3-logo.svg';
+import quizData from '../../data/quizData.json';
 
-export default function Quiz({ navigation, route }) {
-  // Dados podem vir por route.params.quiz (JSON) ou ser buscados do DB
-  const [quiz, setQuiz] = useState(route?.params?.quiz || null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [selected, setSelected] = useState(null);
+const Quiz = () => {
+  const navigation = useNavigation();
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [score, setScore] = useState(0);
+  const [quiz, setQuiz] = useState(null);
 
   useEffect(() => {
-    if (!quiz) {
-      // EXEMPLO: buscar do banco / API
-      // substitua fetchQuizFromDB() por sua chamada real
-      async function fetchQuizFromDB() {
-        // TODO: troque pelo fetch/axios para seu backend ou sqlite/localstorage
-        // const resp = await fetch('https://seu-servidor/api/quiz/1');
-        // const data = await resp.json();
-        // setQuiz(data);
-        const sample = SAMPLE_QUIZ; // fallback local (ver constante abaixo)
-        setQuiz(sample);
-      }
-      fetchQuizFromDB();
-    }
+    setQuiz(quizData);
   }, []);
 
   if (!quiz) {
@@ -32,57 +24,53 @@ export default function Quiz({ navigation, route }) {
     );
   }
 
-  const question = quiz.questions[currentIndex];
+  const currentQuestion = quizData.questions[currentQuestionIndex];
 
-  function onSelectOption(idx) {
-    setSelected(idx);
+  function handleOptionSelect(option) {
+    setSelectedOption(option);
   }
 
-  function onContinue() {
-    // TODO: salvar resposta no DB se desejar (ex: enviar resultado parcial)
-    // exemplo: await saveAnswerToDB({ questionId: question.id, selectedIndex: selected });
+  function handleContinue() {
+    if (selectedOption === currentQuestion.correctAnswer) {
+      setScore(score + 1);
+    }
 
-    // avançar para próxima pergunta
-    const next = currentIndex + 1;
-    if (next < quiz.questions.length) {
-      setCurrentIndex(next);
-      setSelected(null);
+    const nextQuestionIndex = currentQuestionIndex + 1;
+    if (nextQuestionIndex < quizData.questions.length) {
+      setCurrentQuestionIndex(nextQuestionIndex);
+      setSelectedOption(null);
     } else {
-      // finalizar -> navegar para tela de resultado ou retornar
-      navigation.navigate('Results', { quizResult: { quizId: quiz.id } }); // Fixed missing closing brackets
+      navigation.navigate('Resultados', { score: score + (selectedOption === currentQuestion.correctAnswer ? 1 : 0), total: quizData.questions.length });
     }
   }
 
-  // renderiza cada opção como um quadrado com imagem (2 colunas)
   function renderOption({ item, index }) {
-    const isSelected = selected === index;
+    const isSelected = selectedOption === item;
     const borderColor = isSelected ? '#5ED0F3' : '#fff';
-    // Suporta imageUrl remoto (item.image) ou local (item.localAsset require)
-    const imageSource = item.image ? { uri: item.image } : item.localAsset ? item.localAsset : null;
-
+    
     return (
       <TouchableOpacity
         style={[styles.optionBox, { borderColor }]}
-        onPress={() => onSelectOption(index)}
+        onPress={() => handleOptionSelect(item)}
         activeOpacity={0.8}
       >
-        {imageSource ? (
-          <Image source={imageSource} style={styles.optionImage} resizeMode="contain" />
-        ) : null}
-        {item.text ? <Text style={styles.optionLabel}>{item.text}</Text> : null}
+        <Text style={styles.optionLabel}>{item}</Text>
       </TouchableOpacity>
     );
   }
 
   return (
     <View style={styles.container}>
-      {/* logo: se usar SVG local, verifique react-native-svg / svgr; caso contrário, use PNG */}
-      <Image source={require('../../../assets/mub3-logo.svg')} style={styles.logo} resizeMode="contain" />
+      <Logo width={120} height={40} style={styles.logo} />
 
-      <Text style={styles.questionTitle}>{question.title}</Text>
+      <View style={styles.imagePlaceholder}>
+        <Text style={styles.imagePlaceholderText}>[Imagem da pergunta]</Text>
+      </View>
+
+      <Text style={styles.questionTitle}>{currentQuestion.question}</Text>
 
       <FlatList
-        data={question.options}
+        data={currentQuestion.options}
         keyExtractor={(_, i) => String(i)}
         renderItem={renderOption}
         numColumns={2}
@@ -95,9 +83,9 @@ export default function Quiz({ navigation, route }) {
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={[styles.continueBtn, { opacity: selected === null ? 0.6 : 1 }]}
-          onPress={onContinue}
-          disabled={selected === null}
+          style={[styles.continueBtn, { opacity: selectedOption === null ? 0.6 : 1 }]}
+          onPress={handleContinue}
+          disabled={selectedOption === null}
         >
           <Text style={styles.continueText}>Continuar</Text>
         </TouchableOpacity>
@@ -105,42 +93,6 @@ export default function Quiz({ navigation, route }) {
     </View>
   );
 }
-
-/* Estrutura JSON esperada:
-{
-  id: "quiz1",
-  title: "Título do quiz",
-  questions: [
-    {
-      id: "q1",
-      title: "QUAL O LUGAR ONDE PRESERVAMOS MEMÓRIAS?",
-      options: [
-        { text: "Opção A", image: "https://meuservidor.com/img1.png" },
-        { text: "Opção B", localAsset: require('../../../assets/img2.png') },
-        ...
-      ]
-    },
-    ...
-  ]
-}
-*/
-
-const SAMPLE_QUIZ = {
-  id: 'demo',
-  title: 'Museu Quiz',
-  questions: [
-    {
-      id: 'q1',
-      title: 'QUAL O LUGAR ONDE PRESERVAMOS MEMÓRIAS?',
-      options: [
-        { text: 'Museu', image: 'https://i.imgur.com/1.png' },
-        { text: 'Biblioteca', image: 'https://i.imgur.com/2.png' },
-        { text: 'Arquivo', image: 'https://i.imgur.com/3.png' },
-        { text: 'Galeria', image: 'https://i.imgur.com/4.png' },
-      ],
-    },
-  ],
-};
 
 const styles = StyleSheet.create({
   container: {
@@ -150,10 +102,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    width: 140,
-    height: 60,
+    width: 120,
+    height: 40,
     marginTop: 10,
     marginBottom: 8,
+  },
+  imagePlaceholder: {
+    width: '80%',
+    height: 150,
+    marginBottom: 20,
+    backgroundColor: '#1e1e1e',
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  imagePlaceholderText: {
+    color: '#888',
+    fontStyle: 'italic',
   },
   questionTitle: {
     color: '#fff',
@@ -176,13 +141,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 6,
   },
-  optionImage: {
-    width: 80,
-    height: 80,
-  },
   optionLabel: {
     color: '#fff',
-    fontSize: 12,
+    fontSize: 14,
     marginTop: 6,
     textAlign: 'center',
   },
@@ -193,8 +154,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 16,
     paddingHorizontal: 8,
-    position: 'absolute',
-    bottom: 18,
+    marginTop: 12,
   },
   homeBtn: {
     backgroundColor: '#5ED0F3',
@@ -215,3 +175,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
+export default Quiz;

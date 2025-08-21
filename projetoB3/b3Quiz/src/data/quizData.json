@@ -1,0 +1,52 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "O que é um museu, como o da imagem?",
+      "options": [
+        "Um lugar para comprar coisas antigas",
+        "Um lugar que guarda e mostra objetos importantes da história e da arte",
+        "Um parque de diversões",
+        "Uma biblioteca"
+      ],
+      "correctAnswer": "Um lugar que guarda e mostra objetos importantes da história e da arte",
+      "image": "museu.png"
+    },
+    {
+      "id": 2,
+      "question": "Qual é a principal função de um museu?",
+      "options": [
+        "Vender ingressos",
+        "Entreter as pessoas",
+        "Preservar memórias e a história",
+        "Guardar coisas sem valor"
+      ],
+      "correctAnswer": "Preservar memórias e a história",
+      "image": "memoria.png"
+    },
+    {
+      "id": 3,
+      "question": "O que significa a sigla CAA, relacionada às imagens de comunicação?",
+      "options": [
+        "Comunicação Alternativa e Aumentativa",
+        "Centro de Apoio ao Artista",
+        "Comunicação Ampla e Aberta",
+        "Conselho de Artes e Antiguidades"
+      ],
+      "correctAnswer": "Comunicação Alternativa e Aumentativa",
+      "image": "caa.png"
+    },
+    {
+      "id": 4,
+      "question": "Para que serve a Comunicação Aumentativa e Alternativa (CAA)?",
+      "options": [
+        "Para aprender a desenhar",
+        "Para ajudar pessoas com dificuldades na fala a se comunicarem",
+        "Para criar jogos de computador",
+        "Para traduzir idiomas"
+      ],
+      "correctAnswer": "Para ajudar pessoas com dificuldades na fala a se comunicarem",
+      "image": "comunicacao.png"
+    }
+  ]
+}

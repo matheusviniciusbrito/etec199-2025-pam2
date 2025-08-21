@@ -1,13 +1,10 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import Logo from '../../../assets/mub3-logo.svg';
 
 export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
-      <Image
-        source={require('../../../assets/mub3-logo.svg')}
-        style={styles.logo}
-        resizeMode="contain"
-      />
+      <Logo width={180} height={80} style={styles.logo} />
 
       <Text style={styles.subtitle}>
         Museu da bolsa do Brasil nasceu do desejo de preservar e compartilhar a
