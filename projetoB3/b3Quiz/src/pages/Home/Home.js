@@ -21,7 +21,7 @@ export default function Home({ navigation }) {
           <Text style={styles.buttonText1}>Jogar</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.buttonSecondary}>
+        <TouchableOpacity style={styles.buttonSecondary} onPress={() => navigation.navigate('SaibaMais')}>
           <Text style={styles.buttonText2}>Saiba mais</Text>
         </TouchableOpacity>
       </View>
