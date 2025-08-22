@@ -23,7 +23,7 @@ export default function Resultados({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0D0D0D',
+    backgroundColor: '#231F20',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,

@@ -97,7 +97,7 @@ const Quiz = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0D0D0D',
+    backgroundColor: '#231F20',
     padding: 20,
     alignItems: 'center',
   },
