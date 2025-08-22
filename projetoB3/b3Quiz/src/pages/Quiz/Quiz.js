@@ -1,12 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native';
+import styles from './Quiz.styles';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import Logo from '../../../assets/mub3-logo.svg';
+
 import quizData from '../../data/quizData.json';
 
-const Quiz = () => {
+import bolsaImg from '../../../assets/bolsa.png';
+import acoesImg from '../../../assets/acoes.png';
+import investimentoImg from '../../../assets/investimento.png';
+import pregaoImg from '../../../assets/pregao.png';
+import museuImg from '../../../assets/museu.png';
+
+const imageMap = {
+  'bolsa.png': bolsaImg,
+  'acoes.png': acoesImg,
+  'investimento.png': investimentoImg,
+  'pregao.png': pregaoImg,
+  'museu.png': museuImg,
+};
+
+
+const Quiz = ({ route }) => {
   const navigation = useNavigation();
+  const username = route?.params?.username || '';
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [score, setScore] = useState(0);
@@ -40,7 +57,11 @@ const Quiz = () => {
       setCurrentQuestionIndex(nextQuestionIndex);
       setSelectedOption(null);
     } else {
-      navigation.navigate('Resultados', { score: score + (selectedOption === currentQuestion.correctAnswer ? 1 : 0), total: quizData.questions.length });
+      navigation.navigate('Resultados', {
+        score: score + (selectedOption === currentQuestion.correctAnswer ? 1 : 0),
+        total: quizData.questions.length,
+        username: username
+      });
     }
   }
 
@@ -59,12 +80,26 @@ const Quiz = () => {
     );
   }
 
+
+  function getImageSource(imageName) {
+    if (!imageName) return null;
+    return imageMap[imageName] || null;
+  }
+
   return (
     <View style={styles.container}>
-      <Logo width={120} height={40} style={styles.logo} />
+    <Image source={require('../../../assets/mub3-logo.png')} style={styles.logo} resizeMode="contain" />
 
       <View style={styles.imagePlaceholder}>
-        <Text style={styles.imagePlaceholderText}>[Imagem da pergunta]</Text>
+        {currentQuestion.image ? (
+          <Image
+            source={getImageSource(currentQuestion.image)}
+            style={{ width: 150, height: 150, resizeMode: 'contain' }}
+            accessibilityLabel="Imagem da pergunta"
+          />
+        ) : (
+          <Text style={styles.imagePlaceholderText}>[Imagem da pergunta]</Text>
+        )}
       </View>
 
       <Text style={styles.questionTitle}>{currentQuestion.question}</Text>
@@ -93,87 +128,5 @@ const Quiz = () => {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#231F20',
-    padding: 20,
-    alignItems: 'center',
-  },
-  logo: {
-    width: 120,
-    height: 40,
-    marginTop: 10,
-    marginBottom: 8,
-  },
-  imagePlaceholder: {
-    width: '80%',
-    height: 150,
-    marginBottom: 20,
-    backgroundColor: '#1e1e1e',
-    borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  imagePlaceholderText: {
-    color: '#888',
-    fontStyle: 'italic',
-  },
-  questionTitle: {
-    color: '#fff',
-    fontSize: 16,
-    textAlign: 'center',
-    marginVertical: 12,
-  },
-  optionsList: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  optionBox: {
-    backgroundColor: '#141414',
-    width: 140,
-    height: 140,
-    margin: 8,
-    borderRadius: 8,
-    borderWidth: 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 6,
-  },
-  optionLabel: {
-    color: '#fff',
-    fontSize: 14,
-    marginTop: 6,
-    textAlign: 'center',
-  },
-  footer: {
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingVertical: 16,
-    paddingHorizontal: 8,
-    marginTop: 12,
-  },
-  homeBtn: {
-    backgroundColor: '#5ED0F3',
-    width: 52,
-    height: 44,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  continueBtn: {
-    backgroundColor: '#5ED0F3',
-    paddingVertical: 12,
-    paddingHorizontal: 28,
-    borderRadius: 25,
-  },
-  continueText: {
-    color: '#0D0D0D',
-    fontWeight: 'bold',
-  },
-});
 
 export default Quiz;

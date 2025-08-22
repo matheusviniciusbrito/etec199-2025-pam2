@@ -1,12 +1,29 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import styles from './Resultados.styles';
 
-export default function Resultados({ route, navigation }) {
-  const { score, total } = route.params;
+
+export default function Resultados({ route }) {
+  const navigation = useNavigation();
+  const { score, total, username } = route.params;
+
+  // Mensagem personalizada
+  let mensagem = '';
+  if (score === total) {
+    mensagem = 'Parabéns, ' + (username || 'usuário') + '! Você acertou tudo!';
+  } else if (score >= total * 0.7) {
+    mensagem = 'Muito bom, ' + (username || 'usuário') + '! Você foi muito bem!';
+  } else if (score >= total * 0.4) {
+    mensagem = 'Legal, ' + (username || 'usuário') + '! Mas dá pra melhorar!';
+  } else {
+    mensagem = 'Continue tentando, ' + (username || 'usuário') + '! O importante é aprender!';
+  }
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Resultado do Quiz</Text>
+  <Text style={[styles.scoreText, { textAlign: 'center' }]}>{mensagem}</Text>
       <Text style={styles.scoreText}>
         Você acertou {score} de {total} perguntas!
       </Text>
@@ -19,35 +36,3 @@ export default function Resultados({ route, navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#231F20',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#fff',
-    marginBottom: 20,
-  },
-  scoreText: {
-    fontSize: 18,
-    color: '#fff',
-    marginBottom: 40,
-  },
-  button: {
-    backgroundColor: '#5ED0F3',
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    borderRadius: 25,
-  },
-  buttonText: {
-    color: '#0D0D0D',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-});
