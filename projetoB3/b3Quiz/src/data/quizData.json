@@ -2,51 +2,63 @@
   "questions": [
     {
       "id": 1,
-      "question": "O que é um museu, como o da imagem?",
+      "question": "O que é a bolsa de valores?",
       "options": [
-        "Um lugar para comprar coisas antigas",
-        "Um lugar que guarda e mostra objetos importantes da história e da arte",
-        "Um parque de diversões",
-        "Uma biblioteca"
+        "Um lugar onde guardamos memórias históricas",
+        "Um mercado onde ações e outros investimentos são negociados",
+        "Uma instituição que fabrica dinheiro",
+        "Uma empresa que vende ações próprias"
       ],
-      "correctAnswer": "Um lugar que guarda e mostra objetos importantes da história e da arte",
-      "image": "museu.png"
+      "correctAnswer": "Um mercado onde ações e outros investimentos são negociados",
+      "image": "bolsa.png"
     },
     {
       "id": 2,
-      "question": "Qual é a principal função de um museu?",
+      "question": "O que é uma ação?",
       "options": [
-        "Vender ingressos",
-        "Entreter as pessoas",
-        "Preservar memórias e a história",
-        "Guardar coisas sem valor"
+        "Um papel usado apenas para decorar",
+        "Uma parte de uma empresa que pode ser comprada e vendida",
+        "Um documento do governo sem valor financeiro",
+        "Um tipo de ingresso para visitar museus"
       ],
-      "correctAnswer": "Preservar memórias e a história",
-      "image": "memoria.png"
+      "correctAnswer": "Uma parte de uma empresa que pode ser comprada e vendida",
+      "image": "acoes.png"
     },
     {
       "id": 3,
-      "question": "O que significa a sigla CAA, relacionada às imagens de comunicação?",
+      "question": "O que significa investir em ações?",
       "options": [
-        "Comunicação Alternativa e Aumentativa",
-        "Centro de Apoio ao Artista",
-        "Comunicação Ampla e Aberta",
-        "Conselho de Artes e Antiguidades"
+        "Comprar ações esperando ganhar dinheiro no futuro",
+        "Doar dinheiro para uma empresa sem retorno",
+        "Trocar ações por produtos no mercado",
+        "Pagar imposto sobre empresas"
       ],
-      "correctAnswer": "Comunicação Alternativa e Aumentativa",
-      "image": "caa.png"
+      "correctAnswer": "Comprar ações esperando ganhar dinheiro no futuro",
+      "image": "investimento.png"
     },
     {
       "id": 4,
-      "question": "Para que serve a Comunicação Aumentativa e Alternativa (CAA)?",
+      "question": "O que era o pregão na bolsa de valores?",
       "options": [
-        "Para aprender a desenhar",
-        "Para ajudar pessoas com dificuldades na fala a se comunicarem",
-        "Para criar jogos de computador",
-        "Para traduzir idiomas"
+        "Um lugar onde aconteciam festas",
+        "Um espaço para negociar ações e definir seus preços",
+        "Uma reunião de governo",
+        "Um mercado popular de rua"
       ],
-      "correctAnswer": "Para ajudar pessoas com dificuldades na fala a se comunicarem",
-      "image": "comunicacao.png"
+      "correctAnswer": "Um espaço para negociar ações e definir seus preços",
+      "image": "pregao.png"
+    },
+    {
+      "id": 5,
+      "question": "Qual é a missão do MUB3 – Museu da Bolsa do Brasil?",
+      "options": [
+        "Preservar e compartilhar a história do mercado de capitais brasileiro",
+        "Ensinar matemática para investidores",
+        "Controlar os preços das ações no mercado",
+        "Vender obras de arte relacionadas à economia"
+      ],
+      "correctAnswer": "Preservar e compartilhar a história do mercado de capitais brasileiro",
+      "image": "museu.png"
     }
   ]
 }

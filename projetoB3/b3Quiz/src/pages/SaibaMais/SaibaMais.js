@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import Logo from '../../../assets/mub3-logo.svg';
 import quizData from '../../data/quizSaibaMais.json';
 
 const SaibaMais = () => {
@@ -40,7 +39,7 @@ const SaibaMais = () => {
       setCurrentQuestionIndex(nextQuestionIndex);
       setSelectedOption(null);
     } else {
-      navigation.navigate('Resultados', { score: score + (selectedOption === currentQuestion.correctAnswer ? 1 : 0), total: quizData.questions.length });
+      navigation.navigate('Login', { score: score + (selectedOption === currentQuestion.correctAnswer ? 1 : 0), total: quizData.questions.length });
     }
   }
 
@@ -61,7 +60,6 @@ const SaibaMais = () => {
 
   return (
     <View style={styles.container}>
-      <Logo width={120} height={40} style={styles.logo} />
 
       <View style={styles.imagePlaceholder}>
         <Text style={styles.imagePlaceholderText}>[Imagem da pergunta]</Text>
