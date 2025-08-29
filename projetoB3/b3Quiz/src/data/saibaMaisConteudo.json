@@ -1,0 +1,120 @@
+{
+  "versao": 1,
+  "atualizadoEm": "2025-08-29",
+  "tituloPrincipal": "Comunicação Aumentativa e Alternativa (CAA)",
+  "subtituloPrincipal": "Saiba mais sobre recursos, objetivos e o Museu da Bolsa do Brasil (MUB3)",
+  "sections": [
+    {
+      "id": "introducao",
+      "ordem": 1,
+      "icone": "information-circle",
+      "titulo": "O que é CAA?",
+      "layout": "text",
+      "paragrafos": [
+        "A Comunicação Aumentativa e Alternativa (CAA) é um conjunto de métodos e ferramentas criados para apoiar pessoas que têm dificuldades na fala ou na escrita.",
+        "Ela oferece recursos como símbolos, gestos, sons ou dispositivos tecnológicos que permitem a comunicação e interação com outras pessoas."
+      ]
+    },
+    {
+      "id": "objetivos",
+      "ordem": 2,
+      "icone": "flag",
+      "titulo": "Objetivos da CAA",
+      "layout": "bullets",
+      "descricao": "Metas principais da Comunicação Aumentativa e Alternativa:",
+      "bullets": [
+        "Facilitar a comunicação de pessoas com dificuldades de fala ou escrita",
+        "Garantir inclusão social e educacional",
+        "Promover autonomia e participação ativa em diferentes contextos"
+      ]
+    },
+    {
+      "id": "servicos",
+      "ordem": 3,
+      "icone": "construct",
+      "titulo": "Recursos e Ferramentas",
+      "layout": "bullets-groups",
+      "grupos": [
+        {
+          "subtitulo": "Formas de Comunicação",
+          "itens": ["Gestos", "Sons", "Apontar símbolos"]
+        },
+        {
+          "subtitulo": "Ferramentas Visuais",
+          "itens": ["Pictogramas", "Cartões de Comunicação Alternativa"]
+        },
+        {
+          "subtitulo": "Tecnologia Assistiva",
+          "itens": ["Dispositivos eletrônicos", "Aplicativos de comunicação"]
+        }
+      ]
+    },
+    {
+      "id": "beneficios",
+      "ordem": 4,
+      "icone": "sparkles",
+      "titulo": "Benefícios da CAA",
+      "layout": "bullets",
+      "bullets": [
+        "Possibilidade de se comunicar sem falar",
+        "Maior participação social",
+        "Inclusão em ambientes educativos e culturais"
+      ]
+    },
+    {
+      "id": "mub3",
+      "ordem": 5,
+      "icone": "museum",
+      "titulo": "MUB3 – Museu da Bolsa do Brasil",
+      "layout": "text",
+      "paragrafos": [
+        "O MUB3 nasceu do desejo de preservar e compartilhar a história do mercado de capitais brasileiro, tornando-se um espaço cultural no centro de São Paulo.",
+        "O museu utiliza também a Comunicação Alternativa como recurso educativo, ajudando visitantes a aprender conceitos como ações, pregão, valor e preço de forma acessível."
+      ]
+    },
+    {
+      "id": "faq",
+      "ordem": 6,
+      "icone": "help-circle",
+      "titulo": "Perguntas Frequentes",
+      "layout": "faq",
+      "faq": [
+        {
+          "q": "Quem pode se beneficiar da CAA?",
+          "a": "Qualquer pessoa que tenha dificuldades permanentes ou temporárias de fala ou escrita."
+        },
+        {
+          "q": "O museu MUB3 é aberto ao público?",
+          "a": "Sim, o museu é aberto a todos os interessados e busca integrar cultura, educação e acessibilidade."
+        }
+      ]
+    },
+    {
+      "id": "contato",
+      "ordem": 7,
+      "icone": "call",
+      "titulo": "Contato",
+      "layout": "contact",
+      "email": "educacaoecultura@b3.com.br",
+      "telefone": "(11) 2565-4000",
+      "endereco": "Rua XV de Novembro, 275 - Centro, São Paulo - SP",
+      "links": [
+        {
+          "rotulo": "Site B3 Educação e Cultura",
+           "url": "https://www.b3.com.br/pt_br/educacao-e-cultura"
+        }
+      ]
+    },
+    {
+      "id": "creditos",
+      "ordem": 8,
+      "icone": "people",
+      "titulo": "Créditos",
+      "layout": "text",
+      "paragrafos": [
+        "Pesquisa e Redação: Adelaide Maria De Estorvo Alencar Da Silva, Airan Joana Monteiro de Souza, Daniel Castro, Gustavo Luiz Panoni Oliveira, Prisca Menegasso.",
+        "Consultoria em acessibilidade: Eduardo Cardoso. Projeto gráfico: Anna Carolina de Oliveira Leite. Apoio institucional: B3 Educação e Cultura."
+      ]
+    }
+  ]
+}
