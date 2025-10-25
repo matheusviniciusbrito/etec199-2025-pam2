@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "reqGetTeste",
-    "slug": "reqGetTeste",
+    "slug": "app-map",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,10 +20,17 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.mavinous.appmap"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f9c0b4ed-fabc-42ce-8ad9-c83876a1f98e"
+      }
+    },
+    "owner": "mavinous"
   }
 }

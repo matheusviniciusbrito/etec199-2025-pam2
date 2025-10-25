@@ -18,20 +18,22 @@ const userController = {
 
   async store(req, res, next) {
     try {
-      const { name, email } = req.body;
-      if (!name || !email) return res.status(400).json({ message: 'name e email são obrigatórios' });
-      const created = await userModel.create({ name, email });
+      const { name, email, phone, birthDate } = req.body;
+      if (!name || !email || !phone || !birthDate) {
+        return res.status(400).json({ message: 'name, email, phone e birthDate são obrigatórios' });
+      }
+      const created = await userModel.create({ name, email, phone, birthDate });
       res.status(201).json(created);
     } catch (err) { next(err); }
   },
 
   async update(req, res, next) {
     try {
-      const { name, email } = req.body;
+      const { name, email, phone, birthDate } = req.body;
       const id = req.params.id;
       const exists = await userModel.findById(id);
       if (!exists) return res.status(404).json({ message: 'Usuário não encontrado' });
-      const updated = await userModel.update(id, { name, email });
+      const updated = await userModel.update(id, { name, email, phone, birthDate });
       res.json(updated);
     } catch (err) { next(err); }
   },
